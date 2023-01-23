@@ -15,13 +15,16 @@ public class Solution {
             return null;
         }
         HashSet<ListNode> set = new HashSet<>();
-        ListNode temp = head;
-        while (temp != null && temp.next != null) {
-            if (set.contains(temp)) {
-                return temp;
+        ListNode fast = head, slow = head;
+        while (fast != null && fast.next != null) {
+            if (set.contains(fast.next)) {
+                return fast.next;
+            } else if (set.contains(fast.next.next)) {
+                return fast.next.next;
             }
-            set.add(temp);
-            temp = temp.next;
+            set.add(slow);
+            slow = slow.next;
+            fast = fast.next.next;
         }
         return null;
     }
