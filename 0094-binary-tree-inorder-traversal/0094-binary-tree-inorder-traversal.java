@@ -14,19 +14,18 @@
  * }
  */
 class Solution {
-    Stack<Integer> ans = new Stack<>();
-    void iot(TreeNode root) {
+    void iot(TreeNode root, ArrayList<Integer> ans) {
         if (root == null) {
             ;
         } else {
-            iot(root.left);
-            ans.push(root.val);
-            iot(root.right);
+            iot(root.left, ans);
+            ans.add(root.val);
+            iot(root.right, ans);
         }
     }
     public List<Integer> inorderTraversal(TreeNode root) {
-        iot(root);
-        System.out.println(ans);
-        return (List)ans;
+        ArrayList<Integer> ans = new ArrayList<>();
+        iot(root, ans);
+        return ans;
     }
 }
