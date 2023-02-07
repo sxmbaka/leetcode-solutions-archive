@@ -9,27 +9,22 @@
  * }
  */
 class Solution {
-    public ListNode reverseList(ListNode head) {
-        if (head == null || head.next == null) {
-            return head;
-        }
-        ListNode prev = null, curr = head, next = head.next;
-        while (next != null) {
-            curr.next = prev;
-            prev = curr;
-            curr = next;
-            next = next.next;
-        }
-        curr.next = prev;
-        return curr;
-    }
-
     public void reorderList(ListNode head) {
-        ListNode temp = head;
+        Stack<ListNode> s = new Stack<>();
+        ListNode temp = head, st, ans;
+        int len = 0;
         while (temp != null) {
-            temp.next = reverseList(temp.next);
+            s.push(temp);
             temp = temp.next;
+            len++;
         }
-        
+        temp = head;
+        for (int i = 0; i < len/2; i++) {
+            st = s.pop();
+            st.next = temp.next;
+            temp.next = st;
+            temp = temp.next.next;
+        }
+        temp.next = null;
     }
 }
