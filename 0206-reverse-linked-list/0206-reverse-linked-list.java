@@ -14,7 +14,7 @@ class Solution {
             return head;
         }
         Stack<ListNode> s = new Stack<>();
-        ListNode temp = head, t = null;
+        ListNode temp = head;
         while (temp.next != null) {
             s.push(temp);
             temp = temp.next;
@@ -22,7 +22,6 @@ class Solution {
         head = temp;
         while (!s.empty()) {
             temp.next = s.pop();
-            // temp.next = t;
             temp = temp.next;
         }
         temp.next = null;
