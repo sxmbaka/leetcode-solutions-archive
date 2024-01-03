@@ -1,5 +1,4 @@
-// 1. Iterate through the array
-// 2. If the result is empty
+
 class Solution {
 private:
     bool isInArray(vector<int>& arr, int num) {
